@@ -13,6 +13,9 @@ class IdGen:
         return r
         
 def sample_graph(g, dist, start_index=-1000000):
+    """Sample graph g to a distance of dist meters. Create new nodes with 
+    negative indicies to not clash with OSM, starting at start_index."""
+    
     id_gen = IdGen(start_index)
     
     gproj = osmnx.project_graph(g)

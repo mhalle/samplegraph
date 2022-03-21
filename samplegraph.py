@@ -15,7 +15,7 @@ class IdGen:
 def sample_graph(g, dist, start_index=-1000000):
     """Sample graph g to a distance of dist meters. Create new nodes with 
     negative indicies to not clash with OSM, starting at start_index."""
-    
+
     id_gen = IdGen(start_index)
     
     gproj = osmnx.project_graph(g)
@@ -53,10 +53,10 @@ def sample_graph(g, dist, start_index=-1000000):
             geometry = LineString(node_point)
             edge_data = row._replace(length=round(geometry.length, 2), geometry=None)
             
-            new_edge_indices.append((nid[0], nid[1], route_number))
+            new_edge_indices.append((nid[0], nid[1], 0))
             new_edge_data.append(edge_data)
             
-            new_edge_indices.append((nid[1], nid[0], route_number))
+            new_edge_indices.append((nid[1], nid[0], 0))
             new_edge_data.append(edge_data)
             
 
